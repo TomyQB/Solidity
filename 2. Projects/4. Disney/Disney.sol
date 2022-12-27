@@ -21,9 +21,9 @@ contract Disney {
     // Mapping para el registro de clientes
     mapping(address => Cliente) public clientes;
 
-    constructor() public {
+    constructor() {
         token = new ERC20Basic(100000);
-        owner = msg.sender;
+        owner = payable(msg.sender);
     }
 
     // Modificador para permitir que las funciones sean solo ejecutadas por la dirección que ha desplegado el contrato
@@ -31,7 +31,7 @@ contract Disney {
         require(
             keccak256(abi.encodePacked(_owner)) ==
                 keccak256(abi.encodePacked(owner)),
-            "No tiene permisos para realizar esa acción"
+            "No tiene permisos para realizar esa accion"
         );
         _;
     }
@@ -41,7 +41,7 @@ contract Disney {
         require(
             keccak256(abi.encodePacked(atraccionesMap[_nombre].nombre)) ==
                 keccak256(abi.encodePacked(_nombre)),
-            "La atracción no existe"
+            "La atraccion no existe"
         );
         _;
     }
@@ -51,7 +51,7 @@ contract Disney {
         require(
             keccak256(abi.encodePacked(atraccionesMap[_nombre].estado)) ==
                 keccak256(abi.encodePacked(true)),
-            "La atracción no está activada"
+            "La atraccion no esta activada"
         );
         _;
     }
@@ -88,7 +88,7 @@ contract Disney {
         // Devolver el cambio
         uint256 returnValue = msg.value.sub(coste);
         // Disney retorna la cantidad de ethers al cliente
-        msg.sender.transfer(returnValue);
+        payable(msg.sender).transfer(returnValue);
     }
 
     // Balance de tokens del contrato disney
@@ -188,7 +188,7 @@ contract Disney {
         token.transfer(msg.sender, address(this), _numTokens);
 
         // Devolucion de los ethers al cliente
-        msg.sender.transfer(precioTokens(_numTokens));
+        payable(msg.sender).transfer(precioTokens(_numTokens));
     }
 
     // --------------------------------------------- GESTION DE COMIDA ---------------------------------------------
