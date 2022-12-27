@@ -1,4 +1,4 @@
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 contract LoopWhile {
     //Suma de los numeros impares menores o iguales 100
@@ -23,11 +23,11 @@ contract LoopWhile {
     uint256 tiempo;
 
     function fijarTiempo() public {
-        tiempo = now;
+        tiempo = block.timestamp;
     }
 
     function espera() public view returns (bool) {
-        while (now < tiempo + 5 seconds) {
+        while (block.timestamp < tiempo + 5 seconds) {
             return false;
         }
 

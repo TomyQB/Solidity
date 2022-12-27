@@ -1,4 +1,4 @@
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
 contract Keccak {

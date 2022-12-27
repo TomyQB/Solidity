@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
 import "./SafeMath.sol";
@@ -101,7 +101,7 @@ contract Loteria {
         */
         for (uint256 i = 0; i < _boletos; i++) {
             uint256 random = uint256(
-                keccak256(abi.encodePacked(now, msg.sender, randNonce))
+                keccak256(abi.encodePacked(block.timestamp, msg.sender, randNonce))
             ) % 10000;
             randNonce++;
             personaBoletosMap[msg.sender].push(random);
@@ -118,7 +118,7 @@ contract Loteria {
     function generarGanadro() external OnlyOwner(msg.sender) {
         require(boletosVendidos.length > 0, "No se ha comprado ningún boleto");
 
-        uint256 posicion_ganador = uint256(keccak256(abi.encodePacked(now))) %
+        uint256 posicion_ganador = uint256(keccak256(abi.encodePacked(block.timestamp))) %
             boletosVendidos.length;
         uint256 numero_ganador = boletosVendidos[posicion_ganador];
         emit boletoGanadorEvent(numero_ganador);

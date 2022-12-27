@@ -1,4 +1,4 @@
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
 contract Require {
@@ -11,9 +11,9 @@ contract Require {
         require(
             keccak256(abi.encodePacked(_password)) ==
                 keccak256(abi.encodePacked("12345")),
-            "Contraseña incorrecta"
+            "Contrasena incorrecta"
         );
-        return "Contraseña correcta";
+        return "Contrasena correcta";
     }
 
     // Funcion para pagar
@@ -21,8 +21,8 @@ contract Require {
     uint256 public cartera = 0;
 
     function pagar(uint256 _cantidad) external returns (uint256) {
-        require(now > tiempo + 5 seconds, "Aun no puedes pagar");
-        tiempo = now;
+        require(block.timestamp > tiempo + 5 seconds, "Aun no puedes pagar");
+        tiempo = block.timestamp;
         cartera += _cantidad;
         return cartera;
     }
@@ -35,7 +35,7 @@ contract Require {
             require(
                 keccak256(abi.encodePacked(_nombre)) !=
                     keccak256(abi.encodePacked(nombres[i])),
-                "Ya está en la lista"
+                "Ya esta en la lista"
             );
         }
         nombres.push(_nombre);

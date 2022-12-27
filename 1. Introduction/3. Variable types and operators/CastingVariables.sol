@@ -1,4 +1,4 @@
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 contract casting {
     uint8 uint_8_bits = 42;
@@ -12,7 +12,6 @@ contract casting {
     // casting
     uint64 public casting_1 = uint64(uint_8_bits);
     uint64 public casting_2 = uint64(uint_256_bits);
-    uint8 public casting_3 = uint8(int_16_bits);
     int256 public casting_4 = int256(int_120_bits);
 
     function castTo64Bits(uint8 _number) public view returns (uint64) {

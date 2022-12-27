@@ -3,7 +3,7 @@
    3. Consultar si una causa ha llegado a objetivo de dinero.
 */
 
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
 contract CausasBeneficas {

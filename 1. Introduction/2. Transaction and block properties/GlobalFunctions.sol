@@ -1,4 +1,4 @@
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 contract GlobalFunctions {
     // Address de quien ha ejecutado la función
@@ -8,7 +8,7 @@ contract GlobalFunctions {
 
     // Tiempo en segundos
     function Now() public view returns (uint256) {
-        return now;
+        return block.timestamp;
     }
 
     // Address del minero que está procesando el bloque actual

@@ -1,4 +1,4 @@
-pragma solidity >=0.4.4 <0.7.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 library Operaciones {
     function suma(uint256 _i) public pure returns (uint256) {
